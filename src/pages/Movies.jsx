@@ -28,19 +28,18 @@ const Movies = () => {
     setSearchParams({ query: queryValue });
   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault()
+  const handleSubmit = evt => {
+    evt.preventDefault();
     if (!query) return;
     getMovies(query)
       .then(function (response) {
         setMovies(response.data.results);
         console.log(response.data.results);
-      
       })
       .catch(function (error) {
         console.error(error);
       });
-		
+
     console.log('clik on search');
   };
 
@@ -50,9 +49,7 @@ const Movies = () => {
     <>
       <form role="search" onSubmit={handleSubmit}>
         <input type="text" value={query} onChange={updateQueryString} />
-        <button type='submit'>
-          Search
-        </button>
+        <button type="submit">Search</button>
       </form>
       {movies && (
         <ul>
