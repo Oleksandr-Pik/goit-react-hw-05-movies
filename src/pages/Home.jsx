@@ -1,4 +1,4 @@
-import TrandingMovies from 'components/TrandingMovies'
+import TrandingMovies from 'components/TrandingMovies/TrandingMovies'
 import React from 'react'
 
 const Home = () => {
