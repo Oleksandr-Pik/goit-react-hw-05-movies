@@ -9,16 +9,15 @@ const Movies = () => {
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (!query) return;
-    getMovies(query)
-      .then(function (response) {
-        setMovies(response.data.results);
-        console.log(response.data.results);
-        // console.log('movies', movies);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    // if (!query) return;
+    // getMovies(query)
+    //   .then(function (response) {
+    //     setMovies(response.data.results);
+    //     console.log(response.data.results);
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error);
+    //   });
   }, []);
 
   const updateQueryString = evt => {
@@ -36,12 +35,12 @@ const Movies = () => {
       .then(function (response) {
         setMovies(response.data.results);
         console.log(response.data.results);
-        // console.log('movies', movies);
+      
       })
       .catch(function (error) {
         console.error(error);
       });
-		// updateQueryString(query)
+		
     console.log('clik on search');
   };
 
