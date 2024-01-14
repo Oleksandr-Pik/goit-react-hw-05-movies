@@ -18,7 +18,7 @@ const Cast = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);
+  }, [movieId]);
   return (
     <div className='wrapper'>
       {/* Cast {movieId} */}
