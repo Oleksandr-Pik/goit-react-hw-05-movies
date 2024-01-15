@@ -9,16 +9,16 @@ const Movies = () => {
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    // if (!query) return;
-    // getMovies(query)
-    //   .then(function (response) {
-    //     setMovies(response.data.results);
-    //     console.log(response.data.results);
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   });
-  }, []);
+    if (!query) return;
+    getMovies(query)
+      .then(function (response) {
+        setMovies(response.data.results);
+        console.log(response.data.results);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [query]);
 
   const updateQueryString = evt => {
     const queryValue = evt.target.value;
@@ -30,15 +30,15 @@ const Movies = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    if (!query) return;
-    getMovies(query)
-      .then(function (response) {
-        setMovies(response.data.results);
-        console.log(response.data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    // if (!query) return;
+    // getMovies(query)
+    //   .then(function (response) {
+    //     setMovies(response.data.results);
+    //     console.log(response.data.results);
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error);
+    //   });
 
     console.log('clik on search');
   };
