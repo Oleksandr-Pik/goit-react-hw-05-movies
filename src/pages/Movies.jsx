@@ -3,8 +3,8 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import getMovies from 'servises/getMovies';
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState(searchParams.get('query') ?? '')
   const location = useLocation();
   const query = searchParams.get('query') ?? '';
