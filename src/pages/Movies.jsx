@@ -4,11 +4,10 @@ import getMovies from 'servises/getMovies';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('')
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('query') ?? '')
+  const location = useLocation();
   const query = searchParams.get('query') ?? '';
-  // let searchQuery = "batman";
 
   useEffect(() => {
     if (!searchQuery) return;
@@ -32,26 +31,15 @@ const Movies = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log('searchQuery', searchQuery)
+    console.log('searchQuery', searchQuery);
+    setSearchQuery('');
     setSearchQuery (evt.target[0].value);
     
     console.dir( evt.target[0].value)
     console.log('clik on search');
     console.log('searchQuery:', searchQuery)
 
-    // if (!query) return;
-    // getMovies(query)
-    //   .then(function (response) {
-    //     setMovies(response.data.results);
-    //     console.log(response.data.results);
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   });
-
   };
-
-  // console.log(location);
 
   return (
     <>
