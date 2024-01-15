@@ -4,13 +4,15 @@ import getMovies from 'servises/getMovies';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('')
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
+  // let searchQuery = "batman";
 
   useEffect(() => {
-    if (!query) return;
-    getMovies(query)
+    if (!searchQuery) return;
+    getMovies(searchQuery)
       .then(function (response) {
         setMovies(response.data.results);
         console.log(response.data.results);
@@ -18,7 +20,7 @@ const Movies = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, [query]);
+  }, [searchQuery]);
 
   const updateQueryString = evt => {
     const queryValue = evt.target.value;
@@ -30,6 +32,13 @@ const Movies = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    console.log('searchQuery', searchQuery)
+    setSearchQuery (evt.target[0].value);
+    
+    console.dir( evt.target[0].value)
+    console.log('clik on search');
+    console.log('searchQuery:', searchQuery)
+
     // if (!query) return;
     // getMovies(query)
     //   .then(function (response) {
@@ -40,7 +49,6 @@ const Movies = () => {
     //     console.error(error);
     //   });
 
-    console.log('clik on search');
   };
 
   // console.log(location);
@@ -48,7 +56,10 @@ const Movies = () => {
   return (
     <>
       <form role="search" onSubmit={handleSubmit}>
-        <input type="text" value={query} onChange={updateQueryString} />
+        <input type="text" 
+        value={query} 
+        onChange={updateQueryString} 
+        />
         <button type="submit">Search</button>
       </form>
       {movies && (
