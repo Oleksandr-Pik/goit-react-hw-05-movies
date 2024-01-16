@@ -48,7 +48,7 @@ const MovieDetails = () => {
             <p>Оцінка користувачів: {movie.vote_average}</p>
             <p>Всього голосів: {movie.vote_count}</p>
             <h3>Про що фільм {movie.title}</h3>
-            <p>{movie.overview}</p>
+            <p>{movie.overview || 'Нажаль інформація про цей фільм відсутня 😢'}</p>
             <h3>Жанр</h3>
             <p>
               {movie.genres.length >= 1 && (<span>{movie.genres[0].name}</span>)}
